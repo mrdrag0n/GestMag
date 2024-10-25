@@ -1,26 +1,23 @@
-package models;
-
-public class Caissier extends Employe {
-    private int numeroDeCaisse;
+class Caissier extends Employe {
+    public int numeroDeCaisse;
 
     public Caissier(int id, String nom, String adresse, int nbrHeures, int numeroDeCaisse) {
         super(id, nom, adresse, nbrHeures);
         this.numeroDeCaisse = numeroDeCaisse;
     }
 
+
     @Override
-    public int calculerSalaire() {
-        int salaire = nbrHeures * 5; // 5 DT/H
+    public double calculerSalaire() {
+        double salaire = nbrHeures * 5;
         if (nbrHeures > 180) {
-            salaire += (nbrHeures - 180) * 5 * 0.15; // 15% de plus pour les heures supplémentaires
+            salaire += (nbrHeures - 180) * 5 * 0.15;
         }
         return salaire;
     }
 
     @Override
     public String toString() {
-        return super.toString() + ", Caissier{" +
-                "numeroDeCaisse=" + numeroDeCaisse +
-                '}';
+        return super.toString() + ", Caissier [Numéro de caisse: " + numeroDeCaisse + "]";
     }
 }

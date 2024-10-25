@@ -1,10 +1,12 @@
-package models;
 
-public class Employe {
-    protected int id;
-    protected String nom;
-    protected String adresse;
-    protected int nbrHeures;
+import java.util.Date;
+abstract class Employe {
+
+
+    public int id;
+    public String nom;
+    public String adresse;
+    public int nbrHeures;
 
     public Employe(int id, String nom, String adresse, int nbrHeures) {
         this.id = id;
@@ -13,27 +15,19 @@ public class Employe {
         this.nbrHeures = nbrHeures;
     }
 
-    public int calculerSalaire() {
-        return 0; // La classe de base ne calcule pas de salaire
-    }
 
-    @Override
+    public abstract double calculerSalaire();
+
     public String toString() {
-        return "Employe{" +
-                "id=" + id +
-                ", nom='" + nom + '\'' +
-                ", adresse='" + adresse + '\'' +
-                ", nbrHeures=" + nbrHeures +
-                '}';
+        return "Employé [ID: " + id + ", Nom: " + nom + ", Adresse: " + adresse + ", Nbr heures: " + nbrHeures + "]";
     }
 
-    // Méthode equals pour comparer deux employés
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employe employe = (Employe) o;
-        return id == employe.id && nbrHeures == employe.nbrHeures &&
-                nom.equals(employe.nom) && adresse.equals(employe.adresse);
+        return id == employe.id && nom.equals(employe.nom) && adresse.equals(employe.adresse) && nbrHeures == employe.nbrHeures;
     }
 }
